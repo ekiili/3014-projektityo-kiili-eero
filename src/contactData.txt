@@ -1,0 +1,14 @@
+010203A1234,
+John,
+Doe,
++358401234567,
+123 Main Street,
+johndoe@email.com
+;
+112233A1234,
+Matti,
+Marko,
+0401234567,
+No address set,
+jamppa@mail.com
+;

@@ -5,6 +5,7 @@
  * 
  * @author Eero Kiili
  */
+
 import java.io.Console;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -70,12 +71,11 @@ public class Contact {
     public void setPersonalID() {
         System.out.print("Set personal ID: ");
         String tempID = console.readLine();
-        //Validates input
-        if (!(Validate.personalID(tempID))) {
-            System.out.println("ID is not valid.");
-            setPersonalID();
-        } else {
+        //Validates input and checks if it is a duplicate
+        if (Validate.personalID(tempID)) {
             this.personalID = tempID;
+        } else {
+            setPersonalID();
         }
     }
 
@@ -96,11 +96,11 @@ public class Contact {
         System.out.print("Set first name: ");
         String tempFirstName = console.readLine();
         //Validates input
-        if (!(Validate.name(tempFirstName))) {
+        if (Validate.name(tempFirstName)) {
+            this.firstName = tempFirstName;
+        } else {
             System.out.println("Name is not valid.");
             setFirstName();
-        } else {
-            this.firstName = tempFirstName;
         }
     }
 
@@ -121,11 +121,11 @@ public class Contact {
         System.out.print("Set last name: ");
         String tempLastName = console.readLine();
         //Validates input
-        if (!(Validate.name(tempLastName))) {
+        if (Validate.name(tempLastName)) {
+            this.lastName = tempLastName;
+        } else {
             System.out.println("Name is not valid.");
             setLastName();
-        } else {
-            this.lastName = tempLastName;
         }
     }
 
@@ -145,12 +145,11 @@ public class Contact {
     public void setPhoneNum() {
         System.out.print("Set phone number: ");
         String tempPhoneNum = console.readLine();
-        //Validates input
-        if (!(Validate.phoneNum(tempPhoneNum))) {
-            System.out.println("Phone number is not valid.");
-            setPhoneNum();
-        } else {
+        //Validates input and checks if it is a duplicate
+        if (Validate.phoneNum(tempPhoneNum)) {
             this.phoneNum = tempPhoneNum;
+        } else {
+            setPhoneNum();
         }
     }
 
@@ -171,11 +170,11 @@ public class Contact {
         System.out.print("Set address: ");
         String tempAddress = console.readLine();
         //Validates input
-        if (!(Validate.address(tempAddress))) {
+        if (Validate.address(tempAddress)) {
+            this.address = tempAddress;
+        } else {
             System.out.println("Address is not valid.");
             setAddress();
-        } else {
-            this.address = tempAddress;
         }
     }
 
@@ -195,12 +194,11 @@ public class Contact {
     public void setEmail() {
         System.out.print("Set e-mail address: ");
         String tempEmail = console.readLine();
-        //Validates input
-        if (!(Validate.email(tempEmail))) {
-            System.out.println("E-mail address is not valid.");
-            setEmail();
-        } else {
+        //Validates input and checks if it is a duplicate
+        if (Validate.email(tempEmail)) {
             this.email = tempEmail;
+        } else {
+            setEmail();
         }
     }
 
@@ -361,17 +359,24 @@ public class Contact {
             String allLines = "";
             while ((line = reader.readLine()) != null) {
                 //Adds every line to one string
-                allLines += line;
                 if (line.equals(";")) {
                     //When the reader reaches ;
                     //-> Sends all information read to toContact 
                     //and resets allLines to empty
                     contactList.add(toContact(allLines));
                     allLines = "";
+                } else {
+                    allLines += line;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        //Update knownIDs, knownPhoneNums and knownEmails
+        for (Contact contact : contactList) {
+            Validate.knownIDs.add(contact.getPersonalID());
+            Validate.knownPhoneNums.add(contact.getPhoneNum());
+            Validate.knownEmails.add(contact.getEmail());
         }
     }
 

@@ -1,3 +1,9 @@
+/**
+ * This is the main class that handles the application logic and user interaction.
+ * 
+ * @author Eero Kiili
+ */
+
 import java.io.Console;
 import java.util.ArrayList;
 
@@ -27,7 +33,7 @@ public class ContactsApp {
      * Lets the user navigate through ContactsApp
      */
     public static void menu() {
-        System.out.print("\n\nChoose an option:\n1. Create a new contact\n2. View contacts\n"
+        System.out.print("\n\nChoose an option:\n\n1. Create a new contact\n2. View contacts\n"
                         + "3. Update a contact\n4. Delete a contact\n5. Exit\n");
         //Validate input for the answer
         switch (Validate.answerNumber(1, 5)) {
@@ -152,7 +158,7 @@ public class ContactsApp {
      * and adds a two second delay for clarity.
      */
     public static void noContacts() {
-        System.out.println("\nYou have no contacts.\n\n\n\n\n");
+        System.out.println("\nYou have no contacts.\n\n");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

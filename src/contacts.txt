@@ -1,0 +1,15 @@
+| ------------ | ------------------------- |
+| personal ID  | 010203A1234               |
+| first name   | John                      |
+| last name    | Doe                       |
+| phone number | +358401234567             |
+| address      | 123 Main Street           |
+| e-mail       | johndoe@email.com;;;      |
+| ------------ | ------------------------- |
+| personal ID  | 112233A1234               |
+| first name   | Matti                     |
+| last name    | Marko                     |
+| phone number | 0401234567                |
+| address      | No address set            |
+| e-mail       | jamppa@mail.com           |
+| ------------ | ------------------------- |

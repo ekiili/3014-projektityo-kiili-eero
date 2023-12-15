@@ -1,57 +1,112 @@
-import java.io.Console;
-
 /**
  *This class contains methods used to validate user input for the Finnish personal ID (henkilötunnus), names, phone numbers, e-mail addresses and physical addresses.
  *
  * @author Eero Kiili
  */
 
+import java.io.Console;
+import java.util.ArrayList;
+
 public class Validate {
     /**
-     * Checks if a string matches the pattern for a Finnish personal ID.
+     * An ArrayList containing all used personal IDs
+     */
+    public static ArrayList<String> knownIDs = new ArrayList<String>();
+    
+    /**
+     * An ArrayList containing all used phone numbers
+     */
+    public static ArrayList<String> knownPhoneNums = new ArrayList<String>();
+
+    /**
+     * An ArrayList containing all used email addresses
+     */
+    public static ArrayList<String> knownEmails = new ArrayList<String>();
+
+    /**
+     * Checks if a string matches the pattern for a Finnish personal ID
+     * and if the personal ID has already been entered for another contact.
      *
      * @param personalID a String containing a personal ID
-     * @return {@code true} if the input matches the pattern, {@code false} otherwise
+     * @return {@code true} if the input matches the pattern and is not a duplicate, 
+     * else {@code false}
      */
     public static boolean personalID(final String personalID) {
-        return personalID.matches("^\\d{6}[-+A]\\d{3}[0-9A-FHJKLMNP-YZ]$");
+        for (String knownID : knownIDs) {
+            if (knownID.equals(personalID)) {
+                System.out.println("ID already in use.");
+                return false;
+            }
+        }
+        knownIDs.add(personalID);
+        if (personalID.matches("^\\d{6}[-+A]\\d{3}[0-9A-FHJKLMNP-YZ]$")) {
+            return true;
+        }
+        System.out.println("ID is not valid.");
+        return false;
     }
 
     /**
      * Checks if a string matches the pattern for a name.
      *
      * @param name a String containing a name
-     * @return {@code true} if the input matches the pattern, {@code false} otherwise
+     * @return {@code true} if the input matches the pattern, else {@code false}
      */
     public static boolean name(final String name) {
         return name.matches("^[A-ZÅÄÖ][a-zåäöA-ZÅÄÖ-]+$");
     }
 
     /**
-     * Checks if a string matches the pattern for a phone number.
+     * Checks if a string matches the pattern for a phone number
+     * and if the phone number has already been entered for another contact.
      *
      * @param phoneNum a String containing a phone number
-     * @return {@code true} if the input matches the pattern, {@code false} otherwise
+     * @return {@code true} if the input matches the pattern and is not a duplicate, 
+     * else {@code false}
      */
     public static boolean phoneNum(final String phoneNum) {
-        return phoneNum.matches("^(\\+\\d{3}|0)\\d{9}$");
+        for (String knownPhoneNum : knownPhoneNums) {
+            if (knownPhoneNum.equals(phoneNum)) {
+                System.out.println("Phone number already in use.");
+                return false;
+            }
+        }
+        knownPhoneNums.add(phoneNum);
+        if (phoneNum.matches("^(\\+\\d{3}|0)\\d{9}$")) {
+            return true;
+        }
+        System.out.println("Phone number is not valid.");
+        return false;
     }
 
     /**
      * Checks if a string matches the pattern for an email address.
+     * and if the email address has already been entered for another contact
      *
      * @param email a String containing an email address
-     * @return {@code true} if the input matches the pattern, {@code false} otherwise
+     * @return {@code true} if the input matches the pattern and it is not a duplicate, 
+     * else {@code false}
      */
     public static boolean email(final String email) {
-        return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+        for (String knownEmail : knownEmails) {
+            if (knownEmail.equals(email)) {
+                System.out.println("Email address already in use.");
+                return false;
+            }
+        }
+        knownEmails.add(email);
+        if (email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            return true;
+        }
+        System.out.println("Email address is not valid.");
+        return false;
     }
 
     /**
      * Checks if a string containing an address meets minimum length requirements.
      *
      * @param address a String containing an address
-     * @return {@code true} if the address length is greater than or equal to 3, {@code false} otherwise
+     * @return {@code true} if the address length is greater than or equal to 3, else {@code false}
      */
     public static boolean address(final String address) {
         return address.length() >= 3;
