@@ -39,7 +39,7 @@ public class Validate {
             }
         }
         knownIDs.add(personalID);
-        if (personalID.matches("^\\d{6}[-+A]\\d{3}[0-9A-FHJKLMNP-YZ]$")) {
+        if (personalID.matches("^\\d{6}[-+A-FU-Y]\\d{3}[0-9A-FHJKLMNP-YZ]$")) {
             return true;
         }
         System.out.println("ID is not valid.");
