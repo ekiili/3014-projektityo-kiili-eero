@@ -1,5 +1,6 @@
 /**
- *This class contains methods used to validate user input for the Finnish personal ID (henkilötunnus), names, phone numbers, e-mail addresses and physical addresses.
+ * This class contains methods used to validate user input for the Finnish personal ID (henkilötunnus),
+ * names, phone numbers, e-mail addresses and physical addresses.
  *
  * @author Eero Kiili
  */

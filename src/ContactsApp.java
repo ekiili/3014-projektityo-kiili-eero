@@ -86,9 +86,9 @@ public class ContactsApp {
             //Finds the contactList index that the user wants to update
             int index = Contact.find();
             System.out.println("What would you like to update?\n1. Personal ID\n2. Name\n"
-                            + "3. Phone number\n4. Address\n5. E-mail address\n");
+                            + "3. Phone number\n4. Address\n5. E-mail address\n6. Exit\n");
             //Validate input for the answer
-            switch (Validate.answerNumber(1, 5)) {
+            switch (Validate.answerNumber(1, 6)) {
                     case 1:
                         Contact.contactList.get(index).setPersonalID();
                         break;
@@ -105,6 +105,8 @@ public class ContactsApp {
                     case 5:
                         Contact.contactList.get(index).setEmail();
                         break;
+                    case 6:
+                        break;
             }
             //Rewrites the entire contacts.txt with the new updated information
             Contact.reWriteList();
@@ -119,9 +121,9 @@ public class ContactsApp {
      */
     public static void deleteContact() {
         if (Contact.contactsExist) {
-            System.out.println("Choose an option:\n1. Delete a single contact\n2. Delete all contacts\n");
+            System.out.println("Choose an option:\n1. Delete a single contact\n2. Delete all contacts\n3. Exit\n");
             //Validate input for the answer
-            switch (Validate.answerNumber(1, 2)) {
+            switch (Validate.answerNumber(1, 3)) {
                 case 1:
                     Contact.contactList.remove(Contact.find());
                     System.out.println("\nContact deleted.");
@@ -142,6 +144,8 @@ public class ContactsApp {
                                 break;
                         }
                     } while (!(choice.matches("[YN]")));
+                case 3:
+                    break;
             }
             if (Contact.contactList.size() == 0) {
                 Contact.contactsExist = false;
