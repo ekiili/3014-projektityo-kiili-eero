@@ -27,9 +27,9 @@ To run the program:
         This file is used for creating an ArrayList every time the program starts
 
 ## Other
-### Known issues
-- This program does not support Ö, Ä or Å when used with the command prompt.
-- The program will allow contacts to have the same personal ID and phone numbers
+
+### Link to screencast
+https://www.youtube.com/watch?v=lr4MCNzOUnM
 
 ### Classes imported
 - [Console](https://docs.oracle.com/javase/8/docs/api/java/io/Console.html)
