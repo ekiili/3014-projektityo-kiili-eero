@@ -1,9 +1,6 @@
 # Contacts App
 This is a Contacts application made using Java 17. It uses a **command line interface (CLI)** to let users create, read, update, and delete contact information.
 
-![menu](https://github.com/ekiili/eeronikiomarepo/assets/144663315/8d92450b-1dee-4c9a-a2c8-b09d157c0a48)
-![contact](https://github.com/ekiili/eeronikiomarepo/assets/144663315/3ae37861-cd73-41ce-a932-d5cc813fdf34)
-
 ## Instructions
 To run the program: 
 - Clone/download this repository
